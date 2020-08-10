@@ -1,6 +1,6 @@
-/**
+/*
  * The MIT License
- * Copyright (c) 2014-2016 Ilkka Seppälä
+ * Copyright © 2014-2019 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,36 +20,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.adapter;
 
 /**
- * The Captain uses {@link BattleShip} to fight. <br>
- * This is the client in the pattern.
+ * The Captain uses {@link RowingBoat} to sail. <br> This is the client in the pattern.
  */
-public class Captain implements BattleShip {
+public final class Captain {
 
-  private BattleShip battleship;
+  private RowingBoat rowingBoat;
 
   public Captain() {
-
   }
 
-  public Captain(BattleShip battleship) {
-    this.battleship = battleship;
+  public Captain(final RowingBoat boat) {
+    this.rowingBoat = boat;
   }
 
-  public void setBattleship(BattleShip battleship) {
-    this.battleship = battleship;
+  void setRowingBoat(final RowingBoat boat) {
+    this.rowingBoat = boat;
   }
 
-  @Override
-  public void fire() {
-    battleship.fire();
-  }
-
-  @Override
-  public void move() {
-    battleship.move();
+  void row() {
+    rowingBoat.row();
   }
 
 }

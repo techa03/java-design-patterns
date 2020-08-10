@@ -3,11 +3,9 @@ layout: pattern
 title: Business Delegate
 folder: business-delegate
 permalink: /patterns/business-delegate/
-pumlid: POl13SCm3CHMQGU8zUysgYCuBcJ5a4x9-l6_Fu84tzsgvYxf-Zg06HyYvxkqZYE_6UBrD8YXr7DGrxmPxFJZYxTTeZVR9WFY5ZGu5j2wkad4wYgD8IIe_xQaZp9pw0C0
-categories: Business Tier
+categories: Structural
 tags:
- - Java
- - Difficulty-Intermediate
+ - Decoupling
 ---
 
 ## Intent
@@ -16,6 +14,7 @@ presentation and business tiers. By using the pattern we gain loose coupling
 between the tiers and encapsulate knowledge about how to locate, connect to,
 and interact with the business objects that make up the application.
 
+## Class diagram
 ![alt text](./etc/business-delegate.png "Business Delegate")
 
 ## Applicability
@@ -27,4 +26,4 @@ Use the Business Delegate pattern when
 
 ## Credits
 
-* [J2EE Design Patterns](http://www.amazon.com/J2EE-Design-Patterns-William-Crawford/dp/0596004273/ref=sr_1_2)
+* [J2EE Design Patterns](https://www.amazon.com/gp/product/0596004273/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596004273&linkCode=as2&tag=javadesignpat-20&linkId=48d37c67fb3d845b802fa9b619ad8f31)

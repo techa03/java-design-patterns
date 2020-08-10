@@ -1,6 +1,6 @@
-/**
+/*
  * The MIT License
- * Copyright (c) 2014-2016 Ilkka Seppälä
+ * Copyright © 2014-2019 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.model.view.presenter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * This test case is responsible for testing our application by taking advantage of the
@@ -54,7 +55,7 @@ public class FileSelectorPresenterTest {
   /**
    * Initializes the components of the test case.
    */
-  @Before
+  @BeforeEach
   public void setUp() {
     this.stub = new FileSelectorStub();
     this.loader = new FileLoader();
@@ -78,7 +79,7 @@ public class FileSelectorPresenterTest {
    */
   @Test
   public void updateFileNameToLoader() {
-    String expectedFile = "Stamatis";
+    var expectedFile = "Stamatis";
     stub.setFileName(expectedFile);
 
     presenter.start();

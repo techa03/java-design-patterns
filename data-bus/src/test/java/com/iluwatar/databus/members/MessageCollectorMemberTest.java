@@ -1,6 +1,6 @@
-/**
+/*
  * The MIT License
- * Copyright (c) 2014 Ilkka Seppälä
+ * Copyright © 2014-2019 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,14 +20,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.databus.members;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.iluwatar.databus.data.MessageData;
 import com.iluwatar.databus.data.StartingData;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.time.LocalDateTime;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@link MessageCollectorMember}.
@@ -39,24 +41,24 @@ public class MessageCollectorMemberTest {
   @Test
   public void collectMessageFromMessageData() {
     //given
-    final String message = "message";
-    final MessageData messageData = new MessageData(message);
-    final MessageCollectorMember collector = new MessageCollectorMember("collector");
+    final var message = "message";
+    final var messageData = new MessageData(message);
+    final var collector = new MessageCollectorMember("collector");
     //when
     collector.accept(messageData);
     //then
-    Assert.assertTrue(collector.getMessages().contains(message));
+    assertTrue(collector.getMessages().contains(message));
   }
 
   @Test
   public void collectIgnoresMessageFromOtherDataTypes() {
     //given
-    final StartingData startingData = new StartingData(LocalDateTime.now());
-    final MessageCollectorMember collector = new MessageCollectorMember("collector");
+    final var startingData = new StartingData(LocalDateTime.now());
+    final var collector = new MessageCollectorMember("collector");
     //when
     collector.accept(startingData);
     //then
-    Assert.assertEquals(0, collector.getMessages().size());
+    assertEquals(0, collector.getMessages().size());
   }
 
 }

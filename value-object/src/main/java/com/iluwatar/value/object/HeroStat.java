@@ -1,6 +1,6 @@
-/**
+/*
  * The MIT License
- * Copyright (c) 2014-2016 Ilkka Seppälä
+ * Copyright © 2014-2019 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,12 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.value.object;
 
 /**
- * HeroStat is a value object
- * 
- * {@link http://docs.oracle.com/javase/8/docs/api/java/lang/doc-files/ValueBased.html}
+ * HeroStat is a value object.
+ *
+ * @see <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/doc-files/ValueBased.html">
+ *     http://docs.oracle.com/javase/8/docs/api/java/lang/doc-files/ValueBased.html
+ *     </a>
  */
 public class HeroStat {
 
@@ -37,7 +40,6 @@ public class HeroStat {
 
   // All constructors must be private.
   private HeroStat(int strength, int intelligence, int luck) {
-    super();
     this.strength = strength;
     this.intelligence = intelligence;
     this.luck = luck;
@@ -75,8 +77,8 @@ public class HeroStat {
 
   @Override
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
+    final var prime = 31;
+    var result = 1;
     result = prime * result + intelligence;
     result = prime * result + luck;
     result = prime * result + strength;
@@ -94,17 +96,14 @@ public class HeroStat {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    HeroStat other = (HeroStat) obj;
+    var other = (HeroStat) obj;
     if (intelligence != other.intelligence) {
       return false;
     }
     if (luck != other.luck) {
       return false;
     }
-    if (strength != other.strength) {
-      return false;
-    }
-    return true;
+    return strength == other.strength;
   }
 
   // The clone() method should not be public. Just don't override it.

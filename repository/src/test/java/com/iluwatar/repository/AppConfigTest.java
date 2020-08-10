@@ -1,6 +1,6 @@
-/**
+/*
  * The MIT License
- * Copyright (c) 2014-2016 Ilkka Seppälä
+ * Copyright © 2014-2019 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,30 +20,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.repository;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.sql.DataSource;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This case is Just for test the Annotation Based configuration
- * 
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AppConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = {AppConfig.class})
 public class AppConfigTest {
 
   @Autowired
@@ -63,14 +60,13 @@ public class AppConfigTest {
   @Test
   @Transactional
   public void testQuery() throws SQLException {
-    ResultSet resultSet = dataSource.getConnection().createStatement().executeQuery("SELECT 1");
+    var resultSet = dataSource.getConnection().createStatement().executeQuery("SELECT 1");
+    var expected = "1";
     String result = null;
-    String expected = "1";
     while (resultSet.next()) {
       result = resultSet.getString(1);
-
     }
-    assertTrue(result.equals(expected));
+    assertEquals(expected, result);
   }
 
 }

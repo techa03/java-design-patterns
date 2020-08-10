@@ -1,6 +1,6 @@
-/**
+/*
  * The MIT License
- * Copyright (c) 2014-2016 Ilkka Seppälä
+ * Copyright © 2014-2019 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,17 +20,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package com.iluwatar.composite;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Date: 12/11/15 - 8:12 PM
@@ -52,7 +53,7 @@ public class MessengerTest {
   /**
    * Inject the mocked std-out {@link PrintStream} into the {@link System} class before each test
    */
-  @Before
+  @BeforeEach
   public void setUp() {
     this.stdOutBuffer = new ByteArrayOutputStream();
     System.setOut(new PrintStream(stdOutBuffer));
@@ -61,7 +62,7 @@ public class MessengerTest {
   /**
    * Removed the mocked std-out {@link PrintStream} again from the {@link System} class
    */
-  @After
+  @AfterEach
   public void tearDown() {
     System.setOut(realStdOut);
   }
@@ -71,7 +72,7 @@ public class MessengerTest {
    */
   @Test
   public void testMessageFromOrcs() {
-    final Messenger messenger = new Messenger();
+    final var messenger = new Messenger();
     testMessage(
         messenger.messageFromOrcs(),
         "Where there is a whip there is a way."
@@ -83,7 +84,7 @@ public class MessengerTest {
    */
   @Test
   public void testMessageFromElves() {
-    final Messenger messenger = new Messenger();
+    final var messenger = new Messenger();
     testMessage(
         messenger.messageFromElves(),
         "Much wind pours from your mouth."
@@ -98,7 +99,7 @@ public class MessengerTest {
    */
   private void testMessage(final LetterComposite composedMessage, final String message) {
     // Test is the composed message has the correct number of words
-    final String[] words = message.split(" ");
+    final var words = message.split(" ");
     assertNotNull(composedMessage);
     assertEquals(words.length, composedMessage.count());
 
